@@ -1,0 +1,47 @@
+package ir.mehdi.mycleanarch.infrastructure.repositories;
+
+
+import ir.mehdi.mycleanarch.infrastructure.exceptions.NotFoundException;
+import ir.mehdi.mycleanarch.domain.models.Customer;
+import ir.mehdi.mycleanarch.domain.repositories.CustomerRepository;
+import ir.mehdi.mycleanarch.infrastructure.entities.CustomerEntity;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public class CustomerRepositoryImpl implements CustomerRepository {
+    private final JpaCustomerRepository repository;
+
+    private final ModelMapper modelMapper;
+
+    public CustomerRepositoryImpl(JpaCustomerRepository repository, ModelMapper modelMapper) {
+        this.repository = repository;
+        this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public Customer persist(Customer customer) {
+        final CustomerEntity customerData = CustomerEntity.from(customer);
+        return repository.save(customerData).fromThis();
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return repository.existsByEmail(email);
+    }
+
+    @Override
+    public Optional<Customer> findByEmail(String email) {
+        CustomerEntity customer = repository.findByEmail(email).orElseThrow(() -> new NotFoundException("customer not found"));
+        return Optional.of(modelMapper.map(customer, Customer.class));
+    }
+
+    @Override
+    public Optional<Customer> findById(Long id) {
+        CustomerEntity customer = repository.findById(id).orElseThrow(() -> new NotFoundException("customer not found"));
+        return Optional.of(modelMapper.map(customer, Customer.class));
+
+    }
+}

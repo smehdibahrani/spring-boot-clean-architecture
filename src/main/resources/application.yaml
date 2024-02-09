@@ -1,0 +1,53 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    #url: jdbc:h2:mem:mydb;DB_CLOSE_DELAY=-1;MODE=MYSQL
+    url: 'jdbc:postgresql://localhost:5432/jsb_demo' #'jdbc:mysql://localhost:3306/hotelCRSStaging'
+    username: 'postgres'
+    password: 'postgres'
+    driver-class-name: 'org.postgresql.Driver'
+    pool-size: 100
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 25
+      idle-timeout: 120000
+      connection-timeout: 300000
+      leak-detection-threshold: 300000
+
+server:
+  port: 6464
+  servlet:
+    context-path: /api/v1
+
+logging:
+  level:
+    org.springframework.web: INFO
+    org.hibernate: ERROR
+
+app:
+  security:
+    jwtSecret: JWTSuperSecretKey
+    jwtExpirationInMs: 604800000
+
+---
+
+spring:
+  profiles: test
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
