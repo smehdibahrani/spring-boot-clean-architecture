@@ -19,6 +19,8 @@ This module contains the models and enums and interfaces.
 There are no dependencies to frameworks and/or libraries and could be extracted to its own module.
 
 ### *infrastructure* package
+This module contains the controllers and entities and implementation of repositories.
 
 ### *usecases* package
+This module contains the business logics that are essential for our application
 
