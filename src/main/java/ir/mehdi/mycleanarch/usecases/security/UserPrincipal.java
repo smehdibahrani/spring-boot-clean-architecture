@@ -28,9 +28,9 @@ public class UserPrincipal implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public static UserPrincipal from(Customer customer) {
+    public static UserPrincipal from(CustomerEntity customer) {
         return new UserPrincipal(
-                customer.getId().getNumber(),
+                customer.getId(),
                 customer.getName(),
                 customer.getEmail(),
                 customer.getPassword(),

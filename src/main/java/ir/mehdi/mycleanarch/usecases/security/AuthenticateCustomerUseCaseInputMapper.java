@@ -1,6 +1,6 @@
 package ir.mehdi.mycleanarch.usecases.security;
 
-import ir.mehdi.mycleanarch.infrastructure.conterollers.customer.SignInRequest;
+import ir.mehdi.mycleanarch.infrastructure.controllers.customer.SignInRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 public final class AuthenticateCustomerUseCaseInputMapper {

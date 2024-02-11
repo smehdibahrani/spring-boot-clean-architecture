@@ -33,15 +33,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Optional<Customer> findByEmail(String email) {
-        CustomerEntity customer = repository.findByEmail(email).orElseThrow(() -> new NotFoundException("customer not found"));
-        return Optional.of(modelMapper.map(customer, Customer.class));
+    public Optional<CustomerEntity> findByEmail(String email) {
+        return repository.findByEmail(email);//.orElseThrow(() -> new NotFoundException("customer not found"));
+        //return Optional.of(modelMapper.map(customer, Customer.class));
     }
 
     @Override
-    public Optional<Customer> findById(Long id) {
-        CustomerEntity customer = repository.findById(id).orElseThrow(() -> new NotFoundException("customer not found"));
-        return Optional.of(modelMapper.map(customer, Customer.class));
+    public Optional<CustomerEntity> findById(Long id) {
+        return repository.findById(id);
+        //return Optional.of(modelMapper.map(customer, CustomerEntity.class));
 
     }
 }

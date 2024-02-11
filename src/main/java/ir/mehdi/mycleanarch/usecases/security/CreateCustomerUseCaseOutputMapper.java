@@ -2,7 +2,7 @@ package ir.mehdi.mycleanarch.usecases.security;
 
 
 import ir.mehdi.mycleanarch.domain.models.Customer;
-import ir.mehdi.mycleanarch.infrastructure.conterollers.ApiResponse;
+import ir.mehdi.mycleanarch.infrastructure.controllers.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 

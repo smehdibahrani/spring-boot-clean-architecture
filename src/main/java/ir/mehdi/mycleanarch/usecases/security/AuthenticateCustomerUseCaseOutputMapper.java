@@ -1,6 +1,6 @@
 package ir.mehdi.mycleanarch.usecases.security;
 
-import ir.mehdi.mycleanarch.infrastructure.conterollers.customer.AuthenticationResponse;
+import ir.mehdi.mycleanarch.infrastructure.controllers.customer.AuthenticationResponse;
 import org.springframework.http.ResponseEntity;
 
 public final class AuthenticateCustomerUseCaseOutputMapper {

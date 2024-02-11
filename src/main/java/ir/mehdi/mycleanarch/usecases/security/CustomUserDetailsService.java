@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Customer customer = customerRepository
+        CustomerEntity customer = customerRepository
                 .findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User %s not found", email)));
 
@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Transactional
     public UserDetails loadUserById(Long id) {
-        Customer customer = customerRepository
+        CustomerEntity customer = customerRepository
                 .findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User %s not found", id)));
 

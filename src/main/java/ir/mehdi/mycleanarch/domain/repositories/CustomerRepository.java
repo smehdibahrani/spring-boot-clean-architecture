@@ -2,6 +2,7 @@ package ir.mehdi.mycleanarch.domain.repositories;
 
 
 import ir.mehdi.mycleanarch.domain.models.Customer;
+import ir.mehdi.mycleanarch.infrastructure.entities.CustomerEntity;
 
 import java.util.Optional;
 
@@ -10,7 +11,7 @@ public interface CustomerRepository {
 
     boolean existsByEmail(String email);
 
-    Optional<Customer> findByEmail(String email);
+    Optional<CustomerEntity> findByEmail(String email);
 
-    Optional<Customer> findById(Long id);
+    Optional<CustomerEntity> findById(Long id);
 }
